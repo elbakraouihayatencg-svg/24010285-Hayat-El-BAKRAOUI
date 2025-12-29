@@ -44,6 +44,24 @@ L'analyse détaillée des métriques de classification et de la matrice de confu
 Le modèle a montré une bonne performance pour la classe 'Low GDP' (Précision de 1.00, Rappel de 0.50), ce qui signifie qu'il a correctement identifié 3 des 6 économies à 'Faible PIB' et que toutes ses prédictions comme 'Low GDP' étaient correctes.
 Cependant, le modèle a échoué à prédire la classe 'High GDP' (Précision, Rappel, F1-score de 0.00). La raison principale est que l'ensemble de test ne contenait aucune instance réelle de la classe 'High GDP'. Cela rend impossible pour le modèle de démontrer sa capacité à reconnaître les économies à 'Haut PIB' sur ces données de test.
 Interprétation Thématique : Ce résultat ne signifie pas nécessairement que les indicateurs ne sont pas pertinents pour la classification du PIB, mais plutôt que l'échantillon de test était insuffisant et non représentatif. Dans un contexte économique réel, un tel déséquilibre ou l'absence d'une catégorie clé dans l'évaluation fausserait l'interprétation de la capacité d'un modèle à identifier les économies performantes.
+## Summary:
+
+### Q&A
+1.  **A histogram showing the distribution of 'Inflation\_rate' according to the 'is\_high\_gdp' target variable.**
+    A histogram visualizing the distribution of 'Inflation\_rate' for both 'High GDP' and 'Low GDP' groups was successfully generated using the dummy dataset.
+2.  **A histogram showing the distribution of 'Unemployment\_rate' according to the 'is\_high\_gdp' target variable.**
+    A histogram visualizing the distribution of 'Unemployment\_rate' for both 'High GDP' and 'Low GDP' groups was successfully generated using the dummy dataset.
+
+### Data Analysis Key Findings
+*   **Exploratory Data Analysis (EDA)**: Histograms were successfully generated for the dummy dataset, visualizing the distributions of 'Inflation\_rate' and 'Unemployment\_rate' against the `is_high_gdp` target variable.
+*   **Data Split**: The dataset was divided into training (24 samples) and testing (6 samples) sets, with the test set representing 20% of the total data.
+*   **Model Performance**: The Random Forest Classifier achieved an overall accuracy of 50.00% on the test set.
+*   **Class Prediction Discrepancy**: The model demonstrated perfect precision (1.00) for the 'Low GDP' class but only a 0.50 recall. Critically, the model completely failed to predict any instances of the 'High GDP' class, resulting in 0.00 for precision, recall, and F1-score. This was due to the 'High GDP' class having 0 support in the test set, indicating its absence from the evaluation subset.
+
+### Insights or Next Steps
+*   The small size of the dataset (30 total samples) and the resulting very small test set (6 samples) likely led to an unrepresentative test split, specifically the complete absence of 'High GDP' samples. This renders the evaluation of the 'High GDP' class unreliable.
+*   To obtain a more robust and reliable model evaluation, especially given the small dataset, consider implementing stratified sampling during the train-test split to ensure both classes are proportionally represented in both sets, or use cross-validation techniques.
+
 
  ## 6. Conclusion et Recommandations
 L'analyse a permis d'explorer les indicateurs économiques et de mettre en œuvre un processus de modélisation. Bien que le dataset soit synthétique, il a permis de visualiser certaines dynamiques et d'illustrer les défis inhérents à l'analyse de données économiques.
