@@ -7,23 +7,7 @@
 
 ## sommaire
  
-## Charger la nouvelle base de données
-
-## Descriptif de la base de données top_six_economies.csv
-
-## Inspection initiale des données
-
-## Préparer les données
-
-## Gérer les valeurs manquantes
-
-## Analyse exploratoire des données (EDA)
-
-## Séparer les données d'entraînement et de test
-
-## Entraîner le modèle
-
-## Charger la nouvelle base de données
+## Charger la base de données
 
 ## Inspection initiale des données
 
@@ -43,8 +27,6 @@
 
 ## Explication de l'Importance des Caractéristiques
 
-## appogé d'etudiant:24010285
-## Classe:CAC2
   ---
 ## Rapport Thématique : Analyse des Indicateurs Économiques des Six Premières Économies Mondiales
   ---
