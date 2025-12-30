@@ -3,13 +3,19 @@
  ---
 ## sommaire
  ---
-Charger la nouvelle base de données
-Descriptif de la base de données top_six_economies.csv
-Inspection initiale des données
-Préparer les données
-Gérer les valeurs manquantes
-Analyse exploratoire des données (EDA)
-Séparer les données d'entraînement et de test
+## Charger la nouvelle base de données
+
+## Descriptif de la base de données top_six_economies.csv
+
+## Inspection initiale des données
+
+## Préparer les données
+
+## Gérer les valeurs manquantes
+
+## Analyse exploratoire des données (EDA)
+
+## Séparer les données d'entraînement et de test
 Entraîner le modèle
 Charger la nouvelle base de données
 Inspection initiale des données
