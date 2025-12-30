@@ -1,8 +1,12 @@
 ## EL BAKRAOUI Hayat École Nationale de Commerce et de Gestion (ENCG) - 4ème Année
 <img src="EL BAKRAOUI Hayat (1).jpg" style="height:164px;margin-right:132px"/>
- ---
+
+ ## appogé d'etudiant:24010285
+## Classe:CAC2
+  ---
+
 ## sommaire
- ---
+ 
 ## Charger la nouvelle base de données
 
 ## Descriptif de la base de données top_six_economies.csv
@@ -16,17 +20,28 @@
 ## Analyse exploratoire des données (EDA)
 
 ## Séparer les données d'entraînement et de test
-Entraîner le modèle
-Charger la nouvelle base de données
-Inspection initiale des données
-Préparer les données
-Gérer les valeurs manquantes
-Analyse exploratoire des données (EDA)
-Séparer les données d'entraînement et de test
-Entraîner le modèle
-Évaluer le modèle
-Explication Détaillée des Résultats d'Évaluation du Modèle
-Explication de l'Importance des Caractéristiques
+
+## Entraîner le modèle
+
+## Charger la nouvelle base de données
+
+## Inspection initiale des données
+
+## Préparer les données
+
+## Gérer les valeurs manquantes
+
+## Analyse exploratoire des données (EDA)
+
+## Séparer les données d'entraînement et de test
+
+## Entraîner le modèle
+
+## Évaluer le modèle
+
+## Explication Détaillée des Résultats d'Évaluation du Modèle
+
+## Explication de l'Importance des Caractéristiques
 
 ## appogé d'etudiant:24010285
 ## Classe:CAC2
