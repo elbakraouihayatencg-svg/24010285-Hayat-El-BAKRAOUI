@@ -131,10 +131,10 @@ Interprétation Thématique : Ce résultat ne signifie pas nécessairement que l
 
 
 
-Explication du Code : Création et Chargement des Données Factices (098d03ab)
-Objectif : Cette cellule de code est cruciale car elle initialise l'ensemble de données sur lequel toute l'analyse thématique sera effectuée. Étant donné que le fichier top_six_economies.csv n'était pas fourni initialement, cette étape le crée artificiellement pour simuler un scénario réel de science des données.
+## Explication du Code : Création et Chargement des Données Factices (098d03ab)
+## Objectif : Cette cellule de code est cruciale car elle initialise l'ensemble de données sur lequel toute l'analyse thématique sera effectuée. Étant donné que le fichier top_six_economies.csv n'était pas fourni initialement, cette étape le crée artificiellement pour simuler un scénario réel de science des données.
 
-Ce que le code fait :
+## Ce que le code fait :
 
 Importations : Importe pandas pour la manipulation des DataFrames et numpy pour la génération de nombres aléatoires.
 Génération des Données : Un dictionnaire data est créé pour contenir des données simulées pour 6 pays sur 5 ans (2015-2019). Les colonnes GDP_billion_USD, Population_million, Inflation_rate, et Unemployment_rate sont remplies avec des valeurs numériques aléatoires dans des plages réalistes.
@@ -144,10 +144,10 @@ Sauvegarde et Chargement : Le DataFrame df_dummy est sauvegardé sous le nom top
 Vérification : Les premières lignes du df_economies chargé sont affichées (df_economies.head()) pour confirmer que le chargement s'est bien passé et que les données ont la structure attendue.
 Insights : Cette étape garantit un environnement de travail reproductible et autonome pour l'analyse. Elle démontre également la capacité à créer des jeux de données de test et à simuler des problèmes de qualité des données (valeurs manquantes).
 
-Explication du Code : Inspection Initiale des Données (ea3604df)
-Objectif : Cette cellule vise à fournir un premier aperçu de la structure, des types de données et de la qualité générale du DataFrame df_economies, notamment la détection des valeurs manquantes et la distribution statistique des colonnes numériques.
+## Explication du Code : Inspection Initiale des Données (ea3604df)
+## Objectif : Cette cellule vise à fournir un premier aperçu de la structure, des types de données et de la qualité générale du DataFrame df_economies, notamment la détection des valeurs manquantes et la distribution statistique des colonnes numériques.
 
-Ce que le code fait :
+## Ce que le code fait :
 
 df_economies.head() : Affiche les 5 premières lignes du DataFrame. Cela permet de visualiser les données brutes, de vérifier les noms de colonnes et de se faire une idée des types de valeurs contenues dans chaque colonne.
 df_economies.info() : Fournit un résumé concis du DataFrame. Il indique le nombre total d'entrées, le nombre de colonnes, le nombre de valeurs non nulles par colonne, le type de données (Dtype) de chaque colonne et l'utilisation de la mémoire. C'est un outil essentiel pour identifier rapidement les colonnes avec des valeurs manquantes (là où Non-Null Count est inférieur au nombre total d'entrées).
