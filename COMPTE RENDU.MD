@@ -7,40 +7,93 @@
 ## Rapport Thématique : Analyse des Indicateurs Économiques des Six Premières Économies Mondiales
   ---
 ## 1. Contexte et Objectif
-Ce rapport présente une analyse des indicateurs économiques clés pour un échantillon de six des plus grandes économies mondiales. L'objectif principal était de comprendre les relations entre des variables telles que le PIB, la population, l'inflation et le chômage, et de développer un modèle capable de classer une économie comme ayant un 'Haut PIB' ou un 'Faible PIB' en fonction de ces indicateurs. Le dataset utilisé est un ensemble de données factices, conçu pour simuler un scénario économique et mettre en lumière les dynamiques potentielles.
+# Rapport d'Analyse : Prédiction du Statut Économique des Grandes Puissances Mondiales
 
-## 2. Aperçu des Données Économiques
-Le dataset top_six_economies.csv simule des données annuelles pour les États-Unis, la Chine, le Japon, l'Allemagne, l'Inde et le Royaume-Uni sur une période de 5 ans (2015-2019). Il comprend les indicateurs suivants :
+## 1. Présentation du Projet et Objectif
 
-GDP_billion_USD (Produit Intérieur Brut)
-Population_million (Population)
-Inflation_rate (Taux d'inflation)
-Unemployment_rate (Taux de chômage)
-La variable cible is_high_gdp a été construite en classifiant les économies selon que leur PIB annuel dépassait la médiane de l'ensemble des observations (établie à 10399.86 milliards USD).
+Ce projet de science des données vise à **prédire et à comprendre les facteurs qui classent une économie parmi les nations à fort PIB (Produit Intérieur Brut) ou à faible PIB**. En utilisant des indicateurs macroéconomiques et sociaux clés, l'objectif est de développer un modèle de Machine Learning capable de discriminer ces deux catégories, offrant ainsi une perspective sur les moteurs de la prospérité économique et un outil potentiel pour l'analyse comparative internationale.
 
- ## 3. Statistiques Descriptives des Indicateurs Clés
-Après traitement des valeurs manquantes par imputation (moyenne), les statistiques descriptives des données ont révélé :
+## 2. Présentation Détaillée de la Base de Données (`df_economies_v2`)
 
-Population : Une moyenne d'environ 104 millions d'habitants, avec une dispersion notable reflétant la diversité démographique des pays inclus.
-Taux d'inflation : Une moyenne autour de 2.28%, suggérant une période de stabilité relative des prix ou une gestion monétaire uniforme dans ce dataset simulé.
-Taux de chômage : Une moyenne d'environ 5.26%, indiquant des niveaux d'emploi variés parmi les économies.
- ## 4. Analyse des Relations entre Indicateurs (EDA)
-L'Analyse Exploratoire des Données a cherché à identifier des tendances et des corrélations :
+La base de données utilisée est `/content/top_six_economies (1).csv`, chargée dans le DataFrame `df_economies_v2`. Elle contient des informations annuelles pour **six des plus grandes économies mondiales** (États-Unis, Chine, Japon, Allemagne, Royaume-Uni, Inde) sur une période de **30 ans, de 1991 à 2020**.
 
-Population et PIB : Les visualisations ont montré que les économies classées 'High GDP' tendaient à avoir des populations légèrement plus élevées que celles classées 'Low GDP'. Bien que le chevauchement soit présent, il y a une indication que la taille de la population pourrait être un facteur contributif au niveau de richesse mesuré par le PIB.
+### Objectif du Dataset :
+Ce jeu de données est conçu pour l'analyse macroéconomique comparative, permettant d'étudier l'évolution des performances économiques et sociales des nations au fil du temps. Il est idéal pour identifier les corrélations entre divers indicateurs et pour la modélisation prédictive.
 
-Inflation, Chômage et PIB : Les distributions du taux d'inflation et du taux de chômage par rapport à la classification 'High GDP'/'Low GDP' n'ont pas révélé de séparations claires ou de tendances prononcées. Cela pourrait indiquer que, dans ce dataset spécifique, ces variables n'ont pas un impact discriminant direct et simple sur la distinction entre 'High GDP' et 'Low GDP' ou que d'autres facteurs interagissent.
+### Organisme Préparateur (Origine Probable) :
+La nature et la granularité des indicateurs suggèrent fortement une compilation par une institution internationale de renom, telle que la **Banque Mondiale (World Bank)**, le **Fonds Monétaire International (FMI)** ou les **Nations Unies (ONU)**. Ces organisations sont les principales sources de données économiques harmonisées pour la recherche et la politique.
 
-Matrice de Corrélation : La matrice de corrélation a permis de visualiser les relations linéaires entre les variables. Par exemple :
+### Caractéristiques (Variables) Clés :
+Le dataset comprend 18 colonnes essentielles :
+*   **`Country Name`** : Pays concerné.
+*   **`Year`** : Année de l'observation.
+*   **`GDP (current US$)`** : PIB nominal actuel en dollars US (utilisé pour définir la variable cible).
+*   **`GDP, PPP (current international $)`** : PIB en parité de pouvoir d'achat.
+*   **`GDP per capita (current US$)`** : PIB par habitant, indicateur du niveau de vie.
+*   **`GDP growth (annual %)`** : Taux de croissance annuel du PIB.
+*   **`Imports of goods and services (% of GDP)`** & **`Exports of goods and services (% of GDP)`** : Part du commerce international dans le PIB.
+*   **`Central government debt, total (% of GDP)`** : Dette publique totale en pourcentage du PIB.
+*   **`Total reserves (includes gold, current US$)`** : Réserves monétaires totales.
+*   **`Unemployment, total (% of total labor force) (modeled ILO estimate)`** : Taux de chômage.
+*   **`Inflation, consumer prices (annual %)`** : Taux d'inflation annuel.
+*   **`Personal remittances, received (% of GDP)`** : Transferts de fonds des migrants.
+*   **`Population, total`** & **`Population growth (annual %)`** : Données démographiques.
+*   **`Life expectancy at birth, total (years)`** : Espérance de vie à la naissance.
+*   **`Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population)`** : Taux de pauvreté extrême.
 
-Year a une faible corrélation avec la plupart des indicateurs, ce qui est attendu car l'année est une variable de temps et non un indicateur économique direct.
-Population_million montre une légère corrélation positive avec certains indicateurs, mais pas de manière écrasante.
-Les variables encodées par pays (Country_Germany, Country_India, etc.) sont, comme prévu, corrélées négativement entre elles, car l'activation d'une annule les autres. Elles montrent également diverses corrélations (positives ou négatives) avec les indicateurs économiques, suggérant que la situation économique varie d'un pays à l'autre.
- ## 5. Modélisation et Interprétation Économique des Performances
-Un classifieur Random Forest a été entraîné pour prédire si une économie aurait un 'Haut PIB' ou un 'Faible PIB'. L'évaluation du modèle sur un petit ensemble de test (6 échantillons) a donné une accuracy de 50%.
+### Problématiques Notables :
+L'inspection initiale a révélé la présence de **valeurs manquantes** importantes dans les colonnes `Central government debt, total (% of GDP)` (69 valeurs manquantes) et `Poverty headcount ratio at $1.90 a day (2011 PPP) (% of population)` (75 valeurs manquantes), nécessitant une étape d'imputation.
 
-L'analyse détaillée des métriques de classification et de la matrice de confusion a révélé une limitation critique :
+## 3. Étapes de l'Analyse de Données et Résultats
 
+### 3.1. Préparation des Données
+
+1.  **Création de la Variable Cible** : Une variable cible binaire, `is_high_gdp`, a été créée. Une économie est classée `1` (High GDP) si son `GDP (current US$)` est supérieur à la médiane du PIB de l'ensemble du dataset (environ 3 040 milliards USD), et `0` (Low GDP) sinon.
+2.  **Séparation Features/Cible** : Les caractéristiques (`X`) et la variable cible (`y`) ont été séparées. Les colonnes `Unnamed: 0`, `GDP (current US$)`, et `is_high_gdp` ont été exclues des caractéristiques.
+3.  **Encodage One-Hot** : La variable catégorielle `Country Name` a été transformée en plusieurs colonnes binaires (`Country Name_Germany`, `Country Name_India`, etc.) à l'aide de l'encodage One-Hot pour être utilisable par les modèles de Machine Learning.
+4.  **Gestion des Valeurs Manquantes** : Toutes les valeurs manquantes restantes dans le DataFrame des caractéristiques (`X`) ont été imputées (remplacées) par la moyenne de leurs colonnes respectives à l'aide de `SimpleImputer`. Après cette étape, aucune valeur manquante n'était présente dans `X_imputed_clean`.
+
+### 3.2. Analyse Exploratoire des Données (EDA)
+
+1.  **Statistiques Descriptives** : Un résumé statistique complet a été généré pour le DataFrame `X_imputed_clean`, fournissant des informations sur la tendance centrale, la dispersion et la distribution des variables numériques et binaires.
+2.  **Visualisations Clés** :
+    *   Des histogrammes ont illustré les distributions de la `Population, total`, du `Inflation, consumer prices (annual %)` et du `Unemployment, total (% of total labor force)` en fonction de la variable cible `is_high_gdp`. Ces graphiques ont permis d'observer les chevauchements et les différences potentielles entre les groupes d'économies à fort et faible PIB.
+    *   Une **carte thermique (heatmap) de corrélation** a visualisé les relations linéaires entre toutes les caractéristiques imputées. Elle a mis en évidence des corrélations notables entre diverses variables économiques (ex: PIB PPP et PIB par habitant sont fortement corrélés, le PIB a tendance à augmenter avec l'année).
+
+### 3.3. Séparation des Données d'Entraînement et de Test
+
+Le jeu de données préparé a été divisé en ensembles d'entraînement et de test avec une proportion de 80/20, garantissant ainsi que 144 échantillons sont utilisés pour l'entraînement du modèle et 36 pour son évaluation finale. (`X_train` : (144, 20), `X_test` : (36, 20)).
+
+### 3.4. Entraînement du Modèle
+
+Un **classifieur Random Forest** a été entraîné sur l'ensemble d'entraînement (`X_train`, `y_train`). Cet algorithme d'ensemble, basé sur des arbres de décision, est robuste et efficace pour les tâches de classification.
+
+### 3.5. Évaluation du Modèle
+
+Le modèle entraîné a été évalué sur l'ensemble de test (`X_test`, `y_test`) :
+
+*   **Accuracy Score Global : 97.22%**
+
+*   **Rapport de Classification :**
+    *   **Classe 'Low GDP' (0)** : Précision de 0.94, Rappel de 1.00, F1-Score de 0.97. Le modèle est excellent pour identifier les économies à faible PIB.
+    *   **Classe 'High GDP' (1)** : Précision de 1.00, Rappel de 0.95, F1-Score de 0.97. Le modèle a une très haute précision pour les économies à fort PIB, avec très peu de faux négatifs.
+
+*   **Matrice de Confusion :**
+    ```
+    [[17,  0],
+     [ 1, 18]]
+    ```
+    Cette matrice révèle : **17 vrais négatifs**, **18 vrais positifs**, **0 faux positifs** et seulement **1 faux négatif**. Un seul échantillon de la classe 'High GDP' a été incorrectement classé comme 'Low GDP', ce qui confirme l'excellente performance générale du modèle.
+
+## 4. Insights et Prochaines Étapes
+
+### Insights :
+Le modèle Random Forest a démontré une **capacité exceptionnelle** à classer les économies en catégories de fort ou faible PIB avec une très haute précision. L'EDA a révélé les corrélations entre les indicateurs, fournissant un contexte pour la prédictivité du modèle.
+
+### Prochaines Étapes :
+1.  **Analyse d'Importance des Caractéristiques** : Déterminer quels indicateurs économiques (PIB par habitant, inflation, chômage, etc.) sont les plus influents dans la prédiction de la catégorie du PIB. Cela pourrait fournir des informations précieuses pour l'élaboration de politiques économiques.
+2.  **Analyse de l'Erreur Unique** : Examiner en détail l'unique faux négatif (l'économie 'High GDP' mal classée en 'Low GDP'). Comprendre les particularités de cet échantillon pourrait aider à identifier des cas limites ou des aspects du modèle à améliorer.
+3.  **Extension de l'Analyse** : Explorer d'autres modèles de classification ou des techniques d'ensemblage pour voir s'il est possible d'améliorer encore la performance, bien que le modèle actuel soit déjà très robuste.
 Le modèle a montré une bonne performance pour la classe 'Low GDP' (Précision de 1.00, Rappel de 0.50), ce qui signifie qu'il a correctement identifié 3 des 6 économies à 'Faible PIB' et que toutes ses prédictions comme 'Low GDP' étaient correctes.
 Cependant, le modèle a échoué à prédire la classe 'High GDP' (Précision, Rappel, F1-score de 0.00). La raison principale est que l'ensemble de test ne contenait aucune instance réelle de la classe 'High GDP'. Cela rend impossible pour le modèle de démontrer sa capacité à reconnaître les économies à 'Haut PIB' sur ces données de test.
 Interprétation Thématique : Ce résultat ne signifie pas nécessairement que les indicateurs ne sont pas pertinents pour la classification du PIB, mais plutôt que l'échantillon de test était insuffisant et non représentatif. Dans un contexte économique réel, un tel déséquilibre ou l'absence d'une catégorie clé dans l'évaluation fausserait l'interprétation de la capacité d'un modèle à identifier les économies performantes.
@@ -52,15 +105,7 @@ Interprétation Thématique : Ce résultat ne signifie pas nécessairement que l
 2.  **A histogram showing the distribution of 'Unemployment\_rate' according to the 'is\_high\_gdp' target variable.**
     A histogram visualizing the distribution of 'Unemployment\_rate' for both 'High GDP' and 'Low GDP' groups was successfully generated using the dummy dataset.
 
-### Data Analysis Key Findings
-*   **Exploratory Data Analysis (EDA)**: Histograms were successfully generated for the dummy dataset, visualizing the distributions of 'Inflation\_rate' and 'Unemployment\_rate' against the `is_high_gdp` target variable.
-*   **Data Split**: The dataset was divided into training (24 samples) and testing (6 samples) sets, with the test set representing 20% of the total data.
-*   **Model Performance**: The Random Forest Classifier achieved an overall accuracy of 50.00% on the test set.
-*   **Class Prediction Discrepancy**: The model demonstrated perfect precision (1.00) for the 'Low GDP' class but only a 0.50 recall. Critically, the model completely failed to predict any instances of the 'High GDP' class, resulting in 0.00 for precision, recall, and F1-score. This was due to the 'High GDP' class having 0 support in the test set, indicating its absence from the evaluation subset.
 
-### Insights or Next Steps
-*   The small size of the dataset (30 total samples) and the resulting very small test set (6 samples) likely led to an unrepresentative test split, specifically the complete absence of 'High GDP' samples. This renders the evaluation of the 'High GDP' class unreliable.
-*   To obtain a more robust and reliable model evaluation, especially given the small dataset, consider implementing stratified sampling during the train-test split to ensure both classes are proportionally represented in both sets, or use cross-validation techniques.
 
 Explication du Code : Création et Chargement des Données Factices (098d03ab)
 Objectif : Cette cellule de code est cruciale car elle initialise l'ensemble de données sur lequel toute l'analyse thématique sera effectuée. Étant donné que le fichier top_six_economies.csv n'était pas fourni initialement, cette étape le crée artificiellement pour simuler un scénario réel de science des données.
@@ -90,10 +135,11 @@ df_economies.info() : Révèle qu'il y a 30 entrées. Les colonnes Country et Ye
 df_economies.describe() : Fournit les statistiques pour les colonnes numériques. Par exemple, la moyenne du GDP_billion_USD est d'environ 10454 millions USD, avec un écart-type de 303. Les taux d'inflation varient de 1% à 4%, et le taux de chômage de 3% à 8%. La médiane de GDP_billion_USD est de 10399.86 milliards USD.
 Cette étape est cruciale pour comprendre l'état initial des données avant toute transformation ou modélisation.
 
-Explication du Code : Préparation des Données (ce9b4bbf)
-Objectif : Cette cellule prépare les données pour la modélisation en définissant la variable cible, séparant les caractéristiques et en encodant les variables catégorielles.
+### Explication du Code : Préparation des Données (ce9b4bbf)
 
-Ce que le code fait :
+### Objectif : Cette cellule prépare les données pour la modélisation en définissant la variable cible, séparant les caractéristiques et en encodant les variables catégorielles.
+
+### Ce que le code fait :
 
 Calcul de la Médiane du PIB : Calcule la médiane de la colonne GDP_billion_USD. Cette médiane servira de seuil pour créer la variable cible.
 Création de la Variable Cible is_high_gdp : Une nouvelle colonne binaire is_high_gdp est ajoutée au DataFrame. Sa valeur est 1 si le GDP_billion_USD du pays est supérieur à la médiane calculée, et 0 sinon. C'est notre variable que le modèle tentera de prédire (classification binaire : PIB élevé vs. PIB faible).
@@ -109,10 +155,9 @@ Le DataFrame X contient maintenant Year, Population_million, Inflation_rate, Une
 Le vecteur y est une série de 0 et de 1, représentant si chaque observation a un PIB 'élevé' ou 'faible'.
 Cette étape est fondamentale pour structurer les données dans un format utilisable par les algorithmes de Machine Learning.
 
-Explication du Code : Gestion des Valeurs Manquantes (47f1d179)
-Objectif : Cette cellule vise à identifier et traiter les valeurs manquantes qui ont été introduites artificiellement dans le jeu de données pour simuler des scénarios réels. L'approche choisie est l'imputation par la moyenne.
+###Objectif : Cette cellule vise à identifier et traiter les valeurs manquantes qui ont été introduites artificiellement dans le jeu de données pour simuler des scénarios réels. L'approche choisie est l'imputation par la moyenne.
 
-Ce que le code fait :
+
 
 Identification Pré-Imputation : X.isnull().sum().sum() calcule le nombre total de valeurs manquantes dans l'ensemble des caractéristiques X avant tout traitement. Cela confirme la présence de valeurs à gérer.
 Instanciation de SimpleImputer : Un objet SimpleImputer de scikit-learn est créé. La stratégie 'mean' est spécifiée, ce qui signifie que toutes les valeurs manquantes (NaN) dans une colonne numérique seront remplacées par la moyenne des valeurs non manquantes de cette colonne.
